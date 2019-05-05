@@ -14,9 +14,6 @@
 		E2B187C322760A7100E2CDA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B187C122760A7100E2CDA2 /* LaunchScreen.storyboard */; };
 		E2B187CB22760C6200E2CDA2 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B187CA22760C6200E2CDA2 /* MainPageViewController.swift */; };
 		E2B187CD22760CFA00E2CDA2 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B187CC22760CFA00E2CDA2 /* AdvertisementViewController.swift */; };
-		E2B187D122760EA300E2CDA2 /* level12.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B187CE22760EA200E2CDA2 /* level12.png */; };
-		E2B187D222760EA300E2CDA2 /* level16.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B187CF22760EA200E2CDA2 /* level16.png */; };
-		E2B187D322760EA300E2CDA2 /* level19.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B187D022760EA300E2CDA2 /* level19.png */; };
 		E2E08A64227DAE1900737EE2 /* UnsplashImageGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E08A63227DAE1900737EE2 /* UnsplashImageGetter.swift */; };
 		E2E08A67227F526D00737EE2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E08A66227F526D00737EE2 /* WebKit.framework */; };
 /* End PBXBuildFile section */
@@ -31,9 +28,6 @@
 		E2B187C422760A7100E2CDA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2B187CA22760C6200E2CDA2 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		E2B187CC22760CFA00E2CDA2 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
-		E2B187CE22760EA200E2CDA2 /* level12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level12.png; sourceTree = "<group>"; };
-		E2B187CF22760EA200E2CDA2 /* level16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level16.png; sourceTree = "<group>"; };
-		E2B187D022760EA300E2CDA2 /* level19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level19.png; sourceTree = "<group>"; };
 		E2E08A63227DAE1900737EE2 /* UnsplashImageGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageGetter.swift; sourceTree = "<group>"; };
 		E2E08A66227F526D00737EE2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -79,19 +73,8 @@
 				E2B187BF22760A7100E2CDA2 /* Assets.xcassets */,
 				E2B187C122760A7100E2CDA2 /* LaunchScreen.storyboard */,
 				E2B187C422760A7100E2CDA2 /* Info.plist */,
-				E2B187D422760EAB00E2CDA2 /* TestImages */,
 			);
 			path = MemeViewer;
-			sourceTree = "<group>";
-		};
-		E2B187D422760EAB00E2CDA2 /* TestImages */ = {
-			isa = PBXGroup;
-			children = (
-				E2B187CE22760EA200E2CDA2 /* level12.png */,
-				E2B187CF22760EA200E2CDA2 /* level16.png */,
-				E2B187D022760EA300E2CDA2 /* level19.png */,
-			);
-			path = TestImages;
 			sourceTree = "<group>";
 		};
 		E2E08A65227F526C00737EE2 /* Frameworks */ = {
@@ -161,10 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B187C322760A7100E2CDA2 /* LaunchScreen.storyboard in Resources */,
-				E2B187D222760EA300E2CDA2 /* level16.png in Resources */,
-				E2B187D122760EA300E2CDA2 /* level12.png in Resources */,
 				E2B187C022760A7100E2CDA2 /* Assets.xcassets in Resources */,
-				E2B187D322760EA300E2CDA2 /* level19.png in Resources */,
 				E2B187BE22760A7000E2CDA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
