@@ -26,6 +26,7 @@ class MainPageViewController: UIPageViewController, UIGestureRecognizerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
+        self.view.backgroundColor = UIColor.white
         if UnsplashImageGetter.shared.arrayOfImagesData.count != 0 {
             prepareArrayOfControllers()
             let firstViewController = arrayOfViewControllers[UserDefaults.standard.integer(forKey: "lastSelectedIndex")]

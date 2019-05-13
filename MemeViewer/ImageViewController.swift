@@ -25,6 +25,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageViewBlur: UIImageView!
     @IBOutlet weak var descriptionTextField: UILabel!
     @IBOutlet weak var authorTextField: UILabel!
     @IBOutlet weak var progressIndicator: UIActivityIndicatorView!
@@ -34,6 +35,8 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var commentScrollViewHeigth: NSLayoutConstraint!
     
     var id: String?
+    var commentViewOriginFrame = CGRect()
+    var commentViewOriginHeight = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +46,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
                 self.setImageData(with: imageData)
             }
         }
-        
         let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(tapOnDetailsView(sender:)))
-        commentView.addGestureRecognizer(tapGuesture)
+        tapGuesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapGuesture)
         
         NotificationCenter.default.addObserver(self, selector: #selector(imageDownloaded(notification:)), name: NSNotification.Name(rawValue: kSmallImageDownloadedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(imageDownloaded(notification:)), name: NSNotification.Name(rawValue: kRegularImageDownloadedNotificationName), object: nil)
@@ -67,6 +70,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.commentView.removeFromSuperview()
         scrollView.zoomScale = 1.0
     }
     
@@ -80,18 +84,19 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func tapOnDetailsView(sender: Any) {
-        if !self.commentScrollView.isHidden {
-            if self.descriptionTextField.numberOfLines == 1 {
-                self.descriptionTextField.numberOfLines = 0
-                let viewHeight = Int(descriptionTextField.calculateMaxLines()) * 24
-                if viewHeight > Int(UIScreen.main.bounds.height/2) {
-                    self.commentScrollViewHeigth.constant = UIScreen.main.bounds.height/2
-                } else {
-                    self.commentScrollViewHeigth.constant = CGFloat(viewHeight)
-                }
-            } else {
-                self.descriptionTextField.numberOfLines = 1
-                self.commentScrollViewHeigth.constant = 24
+        if !self.view.subviews.contains(self.commentView) {
+            commentView.frame = self.view.frame
+            commentView.alpha = 0.0
+            self.view.addSubview(commentView)
+            
+            UIView.animate(withDuration: 0.5) {
+                self.commentView.alpha = 1.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.commentView.alpha = 0.0
+            }) { (_) in
+                self.commentView.removeFromSuperview()
             }
         }
     }
@@ -141,12 +146,14 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
                 self.commentScrollView.isHidden = true
                 self.descriptionTextField.isHidden = true
             }
+            self.commentViewOriginFrame = self.commentView.frame
             if let mainImage = imageData.value(forKey: "mainImage") as? Data {
+                self.imageViewBlur.image = UIImage(data: mainImage)
                 self.imageView.image = UIImage(data: mainImage)
                 self.progressIndicator.stopAnimating()
                 
             } else if let smallImage = imageData.value(forKey: "smallImage") as? Data {
-                
+                self.imageViewBlur.image = UIImage(data: smallImage)
                 self.imageView.image = UIImage(data: smallImage)
                 self.progressIndicator.stopAnimating()
             }
